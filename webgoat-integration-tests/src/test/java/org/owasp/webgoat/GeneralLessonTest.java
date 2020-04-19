@@ -4,7 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +60,22 @@ public class GeneralLessonTest extends IntegrationTest {
         checkAssignment(url("/WebGoat/cia/quiz"), params, true);
         checkResults("/cia/");
 
+    }
+    
+    @Test
+    public void vulnerableComponents() {
+    	String solution = "<contact>\n" + 
+    			"    <java.lang.Integer>1</java.lang.Integer>\n" + 
+    			"    <firstName>Bruce</firstName>\n" + 
+    			"    <lastName>Mayhew</lastName>\n" + 
+    			"    <email>webgoat@owasp.org</email>\n" + 
+    			"</contact>";
+    	startLesson("VulnerableComponents");
+        Map<String, Object> params = new HashMap<>();
+        params.clear();
+        params.put("payload", solution);
+        checkAssignment(url("/WebGoat/VulnerableComponents/attack1"), params, true);
+        checkResults("/VulnerableComponents/");
     }
 
     @Test

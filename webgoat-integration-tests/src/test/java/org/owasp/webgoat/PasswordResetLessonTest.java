@@ -2,7 +2,7 @@ package org.owasp.webgoat;
 
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
@@ -65,7 +65,7 @@ public class PasswordResetLessonTest extends IntegrationTest {
     private void clickForgotEmailLink(String user) {
         RestAssured.given()
                 .when()
-                .header("host", "localhost:9090")
+                .header("host", getWebWolfHostHeader())
                 .relaxedHTTPSValidation()
                 .cookie("JSESSIONID", getWebGoatCookie())
                 .formParams("email", user)
