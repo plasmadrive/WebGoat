@@ -23,7 +23,7 @@ import static io.restassured.RestAssured.given;
 
 public abstract class IntegrationTest {
 
-    protected static int WG_PORT = 8080;
+    protected static int WG_PORT = 8085;
     protected static int WW_PORT = 9090;
     private static String WEBGOAT_HOSTNAME = "127.0.0.1";//"www.webgoat.local";
     private static String WEBWOLF_HOSTNAME = "127.0.0.1";//"www.webwolf.local";
